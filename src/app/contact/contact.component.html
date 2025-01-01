@@ -1,0 +1,161 @@
+
+<div class="container position-relative text-center text-white py-5">
+    <!-- Centered Heading with Bootstrap Blue color -->
+    <h1 class="text-primary">Contact Us</h1>
+    
+  </div>
+
+
+<section class="container mt-5">
+    <!-- Branch Address Section -->
+    <div class="row mb-4">
+      <div class="col-12">
+        <h5 class="text-primary">Branch Address</h5>
+        <p>
+            495J+QCR, Pal Nagar Junction, Paul Nagar, Aditya Nagar, Vizianagaram Cantonment, Vizianagaram, Andhra Pradesh 535003
+        </p>
+        <p>
+          <strong>Telephone:</strong> + 01 234 567 88
+        </p>
+        <p>
+          <strong>Email: </strong> <a href="#">info&#64;example.com </a>
+        </p>
+      </div>
+    </div>
+
+<section class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6 mb-4" style="height: 100%; min-height: 450px;">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d431.4343256751138!2d83.38103824937289!3d18.1095645199489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3be5c6832c9d79%3A0xe3e5bc6578f92457!2sVijaya%20Krishna%20Residency!5e1!3m2!1sen!2sin!4v1735740971948!5m2!1sen!2sin"
+          width="600"
+          height="450"
+          style="border: 0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+  
+      <div class="col-md-6">
+        <div class="card shadow" style="height: 100%; min-height: 450px;">
+          <div class="card-body">
+            <form [formGroup]="reactiveForm" (ngSubmit)="OnFormSubmitted()">
+              <!-- First Name -->
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="First Name"
+                  formControlName="name"
+                />
+                <small
+                  *ngIf="reactiveForm.get('name')?.errors?.['required'] && reactiveForm.get('name')?.touched"
+                  class="text-danger fw-bold"
+                >
+                  *Name is required.
+                </small>
+                <small
+                  *ngIf="reactiveForm.get('name')?.errors?.['minlength'] && reactiveForm.get('name')?.touched"
+                  class="text-danger fw-bold"
+                >
+                  *Name must be at least 3 characters.
+                </small>
+                <small
+                  *ngIf="reactiveForm.get('name')?.errors?.['maxlength'] && reactiveForm.get('name')?.touched"
+                  class="text-danger fw-bold"
+                >
+                  *Name cannot exceed 20 characters.
+                </small>
+              </div>
+  
+              <!-- Email -->
+              <div class="mb-3">
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="E-Mail"
+                  formControlName="email"
+                />
+                <small
+                  *ngIf="reactiveForm.get('email')?.errors?.['required'] && reactiveForm.get('email')?.touched"
+                  class="text-danger fw-bold"
+                >
+                  *Email is required.
+                </small>
+                <small
+                  *ngIf="reactiveForm.get('email')?.errors?.['email'] && reactiveForm.get('email')?.touched"
+                  class="text-danger fw-bold"
+                >
+                  *Please enter a valid email address.
+                </small>
+              </div>
+  
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Phone Number"
+                  formControlName="phone"
+                />
+                <small
+                  *ngIf="
+                    reactiveForm.get('phone')?.errors?.['required'] &&
+                    reactiveForm.get('phone')?.touched
+                  "
+                  class="text-danger fw-bold"
+                >
+                  *Phone number is required.
+                </small>
+                <small
+                  *ngIf="
+                    reactiveForm.get('phone')?.errors?.['pattern'] &&
+                    reactiveForm.get('phone')?.touched
+                  "
+                  class="text-danger fw-bold"
+                >
+                  *Please enter a valid 10-digit phone number.
+                </small>
+              </div>
+  
+              <div class="mb-3">
+                <textarea
+                  class="form-control"
+                  placeholder="Enter query here"
+                  rows="4"
+                  formControlName="query"
+                ></textarea>
+                <small
+                  *ngIf="
+                    reactiveForm.get('query')?.errors?.['required'] &&
+                    reactiveForm.get('query')?.touched
+                  "
+                  class="text-danger fw-bold"
+                >
+                  *Query is required.
+                </small>
+              </div>
+  
+              <!-- Submit Button -->
+              <div class="text-center">
+                <button
+                  type="submit"
+                  class="btn btn-primary px-5"
+                  [disabled]="!reactiveForm.valid"
+                >
+                  SUBMIT NOW
+                </button>
+              </div>
+              <div *ngIf="isSubmitted && isSuccess" class="alert alert-success mt-3">
+                Your message was sent successfully!
+              </div>
+              <div *ngIf="isSubmitted && isSuccess === false" class="alert alert-danger mt-3">
+                Failed to send your message. Please try again later.
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </section>
